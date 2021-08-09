@@ -1,1 +1,188 @@
-/* No CSS *//*# sourceMappingURL=style.css.map */
+/* GLOBAL */ 
+*{
+    font-family: 'Oswald', sans-serif;
+}
+
+html, body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* FIN GLOBAL */
+
+
+
+/* ========= HEADER ========= */
+
+header{
+    background-color: #F3E9F1;
+}
+
+.logoOrinoco{
+    width: 300px;
+    height: 150px;
+    padding-left: 20px;
+}
+
+/* ============= LIEN PANIER ============== */ 
+
+.shopping{
+    color: black !important;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.shopping:hover{
+    color: gray!important;
+}
+
+
+
+/* =========== FIN LIEN PANIER ============ */
+/* ======= FIN HEADER ======= */
+
+
+
+/* =============================================================================================================== */ 
+
+
+
+/**** CAMERAS ****/ 
+.flexContainer{
+    padding-top: 50px;
+    padding-bottom: 65px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.cameraCont{
+    row-gap: 27px;
+}
+
+.cameraCont2{
+    row-gap: 90px;
+}
+
+h1{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+article > p{
+    font-size: 20px;
+    font-weight: 300;
+    padding-bottom: 15px;
+}
+
+.camera img{
+    width: 346px;
+    height: 200px;
+    object-fit: cover;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+}
+
+.camera2 img{
+    width: 346px;
+    height: 300px;
+    object-fit: cover;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+}
+
+figure{
+    width: 350px;
+    border: 2px solid #A9A9A9;
+    box-shadow: 10px 10px 5px #ccc;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    margin: unset;
+    
+}
+
+figcaption > h2{
+    font-size: 16px;
+    padding-top: 5px;
+}
+
+/**** FIN CAMERAS ****/ 
+
+
+
+/* =============================================================================================================== */ 
+
+
+
+/* ========= FOOTER ========= */
+
+footer{
+    bottom: 0;
+}
+
+.aFooter{
+    text-decoration: none;
+    padding-left: 10px;
+}
+
+.list-group-item{
+    background-color: #F3E9F1 !important;
+}
+
+/* ======= FIN FOOTER ======= */
+
+/* MEDIA QUERIES INDEX.HTML */
+@media screen and (max-width: 900px){
+    .camera2 img{
+        height: 200px;
+    }
+
+    .cameraCont2{
+        row-gap: 15px;
+        padding-top: 15px;
+    }
+
+    .flexContainer{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+/* FIN MEDIA QUERIES INDEX.HTML */ 
+
+/*
+====================================================================================================================
+====================================================================================================================
+*/
+
+/* /// CART HTML /// */
+.cartContain{
+    height: 1200px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.shoppingDiv > a{
+    text-decoration: none;
+    color: black;
+}
+
+.shoppingDiv > a:hover{
+    color: gray;
+}
+/* /// FIN CART HTML /// */
+
+/*
+====================================================================================================================
+====================================================================================================================
+*/
+
+/* / CONFIRMATION.HTML / */ 
+
+.confContain{
+    height: 1200px;
+}
+
+/* / FIN CONFIRMATION.HTML / */ 
