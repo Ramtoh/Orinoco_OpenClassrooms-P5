@@ -49,62 +49,106 @@
     <div class="flexContainer">
         <article>
                 <div class="d-flex flex-column cameraCont">
-                    <div class="camera d-flex">
-                        <figure>
+                    <div class="camera d-flex" id="myCam">
+                        <figure >
                             <img src="http://p5octt.herokuapp.com/images/vcam_1.jpg" alt="">
                             <figcaption class="d-flex justify-content-center">
                                 <h2>Zurss 50S</h2>
                             </figcaption>
                         </figure>
+                        <div class="knowMore">
+                            <div class="knowMoreTitle">Zurss 50S</div>
+                            <p class="knowMoreText">
+                                En savoir plus.. 
+                            </p>
+                        </div>
                     </div>
 
-                    <div class="camera d-flex">
+                    <div class="camera d-flex" id="myCam">
                         <figure>
                             <img src="http://p5octt.herokuapp.com/images/vcam_2.jpg" alt="">
                             <figcaption class="d-flex justify-content-center">
                                 <h2>Hirsch 400DTS</h2>
                             </figcaption>
                         </figure>
+                        <div class="knowMore">
+                            <div class="knowMoreTitle">Hirsch 400DTS</div>
+                            <p class="knowMoreText">
+                                En savoir plus.. 
+                            </p>
+                        </div>
                     </div>
 
-                    <div class="camera d-flex">
+                    <div class="camera d-flex" id="myCam">
                         <figure>
                             <img src="http://p5octt.herokuapp.com/images/vcam_3.jpg" alt="">
                             <figcaption class="d-flex justify-content-center">
                                 <h2>Franck JS 105</h2>
                             </figcaption>
                         </figure>
+                        <div class="knowMore">
+                            <div class="knowMoreTitle">Franck JS 105</div>
+                            <p class="knowMoreText">
+                                En savoir plus.. 
+                            </p>
+                        </div>
                     </div>
                 </div>
         </article>
 
         <aside>
             <div class="d-flex flex-column cameraCont2">
-                <div class="camera2 d-flex">
+                <div class="camera2 d-flex" id="myCam">
                     <figure>
                         <img src="http://p5octt.herokuapp.com/images/vcam_4.jpg" alt="">
                         <figcaption class="d-flex justify-content-center">
                             <h2>Kuros TTS</h2>
                         </figcaption>
                     </figure>
+                    <div class="knowMore">
+                        <div class="knowMoreTitle">Kuros TTS</div>
+                        <p class="knowMoreText">
+                            En savoir plus.. 
+                        </p>
+                    </div>
                 </div>
 
-                <div class="camera2 d-flex">
+                <div class="camera2 d-flex" id="myCam">
                     <figure>
                         <img src="http://p5octt.herokuapp.com/images/vcam_5.jpg" alt="">
                         <figcaption class="d-flex justify-content-center">
                             <h2>Katatone</h2>   
                         </figcaption>
                     </figure>
-                    <div>
-                        <a>
-                            <i class="fas fa-info-circle"></i>
-                        </a>
+                    <div class="knowMore">
+                        <div class="knowMoreTitle">Katatone</div>
+                        <p class="knowMoreText">
+                            En savoir plus.. 
+                        </p>
                     </div>
                 </div>
-
             </div>
         </aside>
+        
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Ref :</p>
+                <p>Name :</p>
+                <p>Description :</p>
+                <p>Prix :</p>
+                <div class="">
+                    <p>Objectifs :</p>
+                    <select name="lenses" id="selectLenses">
+                        <option value=""></option>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <button id="addToCart">
+                    Ajouter au Panier
+                </button>
+            </div>
+        </div>
     </div>
 </main>
 <!-- /////////// MAIN CONTAINER END /////////// -->

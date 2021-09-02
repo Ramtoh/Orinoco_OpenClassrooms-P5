@@ -75,12 +75,17 @@ article > p{
     padding-bottom: 15px;
 }
 
+.camera, .camera2{
+    position: relative;
+}
+
 .camera img{
     width: 346px;
     height: 200px;
     object-fit: cover;
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
+    display: block;
 }
 
 .camera2 img{
@@ -89,6 +94,7 @@ article > p{
     object-fit: cover;
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
+    display: block;
 }
 
 figure{
@@ -100,7 +106,6 @@ figure{
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
     margin: unset;
-    
 }
 
 figcaption > h2{
@@ -108,7 +113,85 @@ figcaption > h2{
     padding-top: 5px;
 }
 
+/* Hover Camera */ 
+
+.knowMore{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: #ffff;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+
+.knowMore:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+.knowMoreTitle{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.knowMoreText{
+    font-size: 1.25em;
+    margin-top: 0.25em;
+}
+
+/* Fin Hover Camera */ 
+
 /**** FIN CAMERAS ****/ 
+
+
+
+
+/* =============================================================================================================== */ 
+
+
+
+
+/****== MODAL ==****/
+
+.modal {
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+  }
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+  }
+  
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/****== FIN MODAL ==****/
 
 
 
