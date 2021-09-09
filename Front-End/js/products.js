@@ -1,15 +1,17 @@
-let params = (new URL(document.location)).searchParams;
+const params = (new URL(document.location)).searchParams;
 
-let id = params.get("id");
+const cameraId = params.get("id");
 
-fetch("https://p5octt.herokuapp.com/api/cameras")
+fetch(`https://p5octt.herokuapp.com/api/cameras/${id}`)
     .then(res => res.json())
-    .then(function (cam){
-        let item = new Products(cam)
-        itemView(item);
+    .then(camera => {
+        console.log("camera:", camera)
+        const product = new Products(camera)
+        console.log("product:", product)
+        productsView(item);
     })
-    .catch(function(err) {
-        console.log("fetch Error")
+    .catch(err => {
+        console.log("fetch Error:", err)
         alert("Aucun produit n'a été trouvé")
     });
 
