@@ -12,7 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
 
+    <script src="https://kit.fontawesome.com/0331e4e2fe.js" crossorigin="anonymous"></script>
     <script src='./Front-End/js/index.js' defer></script>
+    <script src="./Front-End/js/camera.js" defer></script>
     <script src='./Front-End/js/bootstrap.js' defer></script>
 
     <title>Orinoco</title>
@@ -26,11 +28,13 @@
                 <div class="d-flex">
                     <img src="./Front-End/img/15675819263013_image1.png" alt="" class="logoOrinoco">
                 </div>
-                <div class="d-flex align-items-end shoppingDiv">
+                <div class="d-flex justify-content-center align-items-center shoppingDiv">
                     <ul class="nav">
                         <li class="nav-item">
                             <a class ="nav-link active shopping" href="./cart.html">
-                                Panier
+                                Panier -
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>0</span>
                             </a>
                         </li>
                     </ul>
@@ -48,107 +52,95 @@
     <p class="text-center">Faites votre choix entre nos différents modèles de caméra :</p>
     <div class="flexContainer">
         <article>
-                <div class="d-flex flex-column cameraCont">
-                    <div class="camera d-flex" id="myCam">
-                        <figure >
-                            <img src="http://p5octt.herokuapp.com/images/vcam_1.jpg" alt="">
-                            <figcaption class="d-flex justify-content-center">
-                                <h2>Zurss 50S</h2>
-                            </figcaption>
-                        </figure>
+            <div id="containerCam" class="d-flex flex-column cameraCont">
+                <div  class="camera d-flex">
+                    <figure>
+                        <img src="http://p5octt.herokuapp.com/images/vcam_1.jpg" alt="">
+                        <figcaption class="d-flex justify-content-center">
+                            <h2>Zurss 50S</h2>
+                        </figcaption>
+                    </figure>
                         <div class="knowMore">
                             <div class="knowMoreTitle">Zurss 50S</div>
-                            <p class="knowMoreText">
+                            <button onclick="openTab(item._id)" id="5be1ed3f1c9d44000030b061" class="camClick">
                                 En savoir plus.. 
-                            </p>
+                            </button>
                         </div>
+                </div>
+                
+                    <div class="camera d-flex">
+                        <a id="5be1ef211c9d44000030b062" class="camClick">
+                            <figure>
+                                <img src="http://p5octt.herokuapp.com/images/vcam_2.jpg" alt="">
+                                <figcaption class="d-flex justify-content-center">
+                                    <h2>Hirsch 400DTS</h2>
+                                </figcaption>
+                            </figure>
+                            <div class="knowMore">
+                                <div class="knowMoreTitle">Hirsch 400DTS</div>
+                                <p class="knowMoreText">
+                                    En savoir plus.. 
+                                </p>
+                            </div>
+                        </a>
                     </div>
 
-                    <div class="camera d-flex" id="myCam">
-                        <figure>
-                            <img src="http://p5octt.herokuapp.com/images/vcam_2.jpg" alt="">
-                            <figcaption class="d-flex justify-content-center">
-                                <h2>Hirsch 400DTS</h2>
-                            </figcaption>
-                        </figure>
-                        <div class="knowMore">
-                            <div class="knowMoreTitle">Hirsch 400DTS</div>
-                            <p class="knowMoreText">
-                                En savoir plus.. 
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="camera d-flex" id="myCam">
-                        <figure>
-                            <img src="http://p5octt.herokuapp.com/images/vcam_3.jpg" alt="">
-                            <figcaption class="d-flex justify-content-center">
-                                <h2>Franck JS 105</h2>
-                            </figcaption>
-                        </figure>
-                        <div class="knowMore">
-                            <div class="knowMoreTitle">Franck JS 105</div>
-                            <p class="knowMoreText">
-                                En savoir plus.. 
-                            </p>
-                        </div>
+                    <div class="camera d-flex">
+                        <a id="5be9bc241c9d440000a730e7" class="camClick">
+                            <figure>
+                                <img src="http://p5octt.herokuapp.com/images/vcam_3.jpg" alt="">
+                                <figcaption class="d-flex justify-content-center">
+                                    <h2>Franck JS 105</h2>
+                                </figcaption>
+                            </figure>
+                            <div class="knowMore">
+                                <div class="knowMoreTitle">Franck JS 105</div>
+                                <p class="knowMoreText">
+                                    En savoir plus.. 
+                                </p>
+                            </div>
+                        </a>
                     </div>
                 </div>
         </article>
 
         <aside>
             <div class="d-flex flex-column cameraCont2">
-                <div class="camera2 d-flex" id="myCam">
-                    <figure>
-                        <img src="http://p5octt.herokuapp.com/images/vcam_4.jpg" alt="">
-                        <figcaption class="d-flex justify-content-center">
-                            <h2>Kuros TTS</h2>
-                        </figcaption>
-                    </figure>
-                    <div class="knowMore">
-                        <div class="knowMoreTitle">Kuros TTS</div>
-                        <p class="knowMoreText">
-                            En savoir plus.. 
-                        </p>
-                    </div>
+                <div class="camera2 d-flex">
+                    <a id="5be9c4471c9d440000a730e8" class="camClick">
+                        <figure>
+                            <img src="http://p5octt.herokuapp.com/images/vcam_4.jpg" alt="">
+                            <figcaption class="d-flex justify-content-center">
+                                <h2>Kuros TTS</h2>
+                            </figcaption>
+                        </figure>
+                        <div class="knowMore">
+                            <div class="knowMoreTitle">Kuros TTS</div>
+                            <p class="knowMoreText">
+                                En savoir plus.. 
+                            </p>
+                        </div>
+                    </a>
                 </div>
 
-                <div class="camera2 d-flex" id="myCam">
-                    <figure>
-                        <img src="http://p5octt.herokuapp.com/images/vcam_5.jpg" alt="">
-                        <figcaption class="d-flex justify-content-center">
-                            <h2>Katatone</h2>   
-                        </figcaption>
-                    </figure>
-                    <div class="knowMore">
-                        <div class="knowMoreTitle">Katatone</div>
-                        <p class="knowMoreText">
-                            En savoir plus.. 
-                        </p>
-                    </div>
+                <div class="camera2 d-flex">
+                    <a id="5be9c4c71c9d440000a730e9" class="camClick">
+                        <figure>
+                            <img src="http://p5octt.herokuapp.com/images/vcam_5.jpg" alt="">
+                            <figcaption class="d-flex justify-content-center">
+                                <h2>Katatone</h2>   
+                            </figcaption>
+                        </figure>
+                        <div class="knowMore">
+                            <div class="knowMoreTitle">Katatone</div>
+                            <p class="knowMoreText">
+                                En savoir plus.. 
+                            </p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </aside>
-        
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <p>Ref :</p>
-                <p>Name :</p>
-                <p>Description :</p>
-                <p>Prix :</p>
-                <div class="">
-                    <p>Objectifs :</p>
-                    <select name="lenses" id="selectLenses">
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-                </div>
-                <button id="addToCart">
-                    Ajouter au Panier
-                </button>
-            </div>
-        </div>
     </div>
 </main>
 <!-- /////////// MAIN CONTAINER END /////////// -->

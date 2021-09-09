@@ -31,13 +31,17 @@ header{
     color: black !important;
     font-weight: 600;
     font-size: 17px;
+    border: 2px solid black;
+    text-align: center;
 }
 
 .shopping:hover{
     color: gray!important;
 }
 
-
+.shoppingDiv{
+    margin-right: 10px;
+}
 
 /* =========== FIN LIEN PANIER ============ */
 /* ======= FIN HEADER ======= */
@@ -54,6 +58,11 @@ header{
     padding-bottom: 65px;
     display: flex;
     justify-content: space-evenly;
+}
+
+.camera > a, .camera2 > a{
+    text-decoration: none!important;
+    color: black!important;
 }
 
 .cameraCont{
@@ -158,42 +167,6 @@ figcaption > h2{
 
 
 /* =============================================================================================================== */ 
-
-
-
-
-/****== MODAL ==****/
-
-.modal {
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4); 
-  }
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; 
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; 
-  }
-  
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-  
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/****== FIN MODAL ==****/
-
-
 
 /* =============================================================================================================== */ 
 
