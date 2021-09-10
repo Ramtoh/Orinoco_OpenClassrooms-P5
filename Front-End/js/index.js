@@ -1,6 +1,6 @@
 function openTab(id) {
   const link = document.createElement('a');
-  link.href = `./products.html?id=${id}'`
+  link.href = `./products.html?id=${id}`
   link.target = '_blank';
   document.body.appendChild(link);
   link.click();
