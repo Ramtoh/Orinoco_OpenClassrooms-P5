@@ -159,6 +159,12 @@ figcaption > h2{
     margin-top: 0.25em;
 }
 
+.camClick{
+    color: black;
+    background-color: #ffff;
+    border-radius: 10px;
+}
+
 /* Fin Hover Camera */ 
 
 /**** FIN CAMERAS ****/ 
@@ -227,6 +233,11 @@ footer{
 
 .shoppingDiv > a:hover{
     color: gray;
+}
+
+
+.dropdown:hover > #cart-dropdown{
+    display: block;
 }
 /* /// FIN CART HTML /// */
 

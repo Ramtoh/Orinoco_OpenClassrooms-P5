@@ -19,11 +19,9 @@ const productsView = item => {
         </div>
         <p class="lead">${item.description}</p>
         <div class="d-flex">
-            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
             <select id="options" class="me-3 dropdown">
-
-            </select>
-            <button class="btn btn-outline-dark flex-shrink-0" type="button">
+            </select>  
+            <button class="btn btn-outline-dark flex-shrink-0 add-to-cart" type="button">
                 <i class="bi-cart-fill me-1"></i>
                 Ajouter au panier 
             </button>
@@ -35,7 +33,79 @@ const productsView = item => {
         options = document.getElementById('options');
         options.innerHTML += `<option value="${lenses}">${lenses}</option>`
     };
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // ajout au panier 
+    let carts = document.querySelectorAll('.add-to-cart');
+
+    for (let i=0; i < carts.length; i++) {
+        carts[i].addEventListener('click', () => {
+            cartNumbers(item);
+            totalCost(item);
+        })
+    }
+    
+    function onLoadCartNumbers() {
+        let productNumbers = localStorage.getItem('cartNumbers');
+
+        if(productNumbers) {
+            document.querySelector('.cart span').textContent = productNumbers;
+        }
+    }
+    
+    function cartNumbers(products) {
+        
+        let productNumbers = localStorage.getItem('cartNumbers');
+
+        productNumbers = parseInt(productNumbers); // converti le cart numbers "string" en nombre 
+
+        if( productNumbers ) {
+            localStorage.setItem('cartNumbers', productNumbers + 1);
+            document.querySelector('.cart span').textContent = productNumbers + 1;
+        } else {
+            localStorage.setItem('cartNumbers', 1);
+            document.querySelector('.cart span').textContent = 1;
+        }
+
+        setItems(products);
+    }
+
+    function setItems(products) {
+        let cartItems = localStorage.getItem('productsInCart');
+        cartItems = JSON.parse(cartItems);
+
+        if(cartItems != null) {
+
+            if(cartItems[products.name] == undefined) {
+                cartItems = {
+                    ...cartItems,
+                    [products.name]: item
+                }
+            }
+            cartItems[products.name].inCart += 1;
+        } else {
+            products.inCart = 1;
+            cartItems = {
+                [products.name]: item
+            }
+        }
+
+        localStorage.setItem("productsInCart", JSON.stringify(cartItems));
+    }
+
+    function totalCost(product) {
+        let cartCost = localStorage.getItem("totalCost");
+
+        if(cartCost != null) {
+            cartCost = parseInt(cartCost);
+            localStorage.setItem("totalCost", cartCost + product.price/100);
+        } else {
+            localStorage.setItem("totalCost", product.price/100);
+        }
+    }
+
+    onLoadCartNumbers();
 };
+
 
 fetch(`https://p5octt.herokuapp.com/api/cameras/${cameraId}`)
     .then(res => res.json())
@@ -49,3 +119,4 @@ fetch(`https://p5octt.herokuapp.com/api/cameras/${cameraId}`)
         console.error("fetch Error:", err)
         alert("Aucun produit n'a été trouvé")
     });
+

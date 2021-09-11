@@ -7,11 +7,9 @@ function openTab(id) {
   link.remove();
 }
 
-
 fetch('https://p5octt.herokuapp.com/api/cameras')
     .then((res) => res.json())
     .then((data) => {
         console.log(data)
     }); 
-
 

@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
 
     <script src='./Front-End/js/camera.js' defer></script>
-    <script src='./Front-End/js/cart.js'></script>
+    <script src='./Front-End/js/cart.js' defer></script>
     <script src='./Front-End/js/bootstrap.js' defer></script>
     <script src="https://kit.fontawesome.com/0331e4e2fe.js" crossorigin="anonymous"></script>
 
@@ -42,6 +42,16 @@
     <main class="cartContain">
         <article>
             <h1 class="text-center">Retrouvez les éléments que vous avez ajouté à votre panier ici :</h1>
+            <table class="table">
+                <thead>
+                    <tr><th>Article</th><th>Prix</th><th>Quantité</th></tr>
+                </thead>
+                <tbody id="cart-tablebody"></tbody>
+            </table>
+
+            <p>Sous-total : <span class="subtotal"></span>€</p>
+
+            <button id="confirm-command">Passer la commande</button>
         </article>
     </main>
     <!-- //// MAIN END //// -->
