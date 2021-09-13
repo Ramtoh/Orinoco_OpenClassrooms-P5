@@ -106,7 +106,6 @@ const productsView = item => {
     onLoadCartNumbers();
 };
 
-
 fetch(`https://p5octt.herokuapp.com/api/cameras/${cameraId}`)
     .then(res => res.json())
     .then(camera => {

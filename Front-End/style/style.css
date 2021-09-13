@@ -219,28 +219,6 @@ footer{
 ====================================================================================================================
 */
 
-/* /// CART HTML /// */
-.cartContain{
-    height: 1200px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-.shoppingDiv > a{
-    text-decoration: none;
-    color: black;
-}
-
-.shoppingDiv > a:hover{
-    color: gray;
-}
-
-
-.dropdown:hover > #cart-dropdown{
-    display: block;
-}
-/* /// FIN CART HTML /// */
-
 /*
 ====================================================================================================================
 ====================================================================================================================
@@ -255,7 +233,103 @@ footer{
 /* / FIN CONFIRMATION.HTML / */ 
 
 /* CART.HTML */
-#containerProducts{
-    height: 550px;
+
+.shoppingDiv > a{
+    text-decoration: none;
+    color: black;
 }
+
+.shoppingDiv > a:hover{
+    color: gray;
+}
+
+.cartContain{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.products-container{
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 100px;
+    max-width: 900px;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.product-header{
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 2px solid black;
+    margin: 0 auto;
+}
+
+.product-title{
+    width: 45%;
+}
+
+.price{
+    width: 15%;
+    display: flex;
+    align-items: center;
+}
+
+.total{
+    width: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.quantity{
+    width: 29%;
+    display: flex;
+    align-items: center;
+}
+
+
+/* html injecté en js pour les produits  */
+.product{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid black;
+}
+
+.product fa-times,
+.product fa-minus,
+.product fa-plus{
+    font-size: 25px;
+    color: black;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+
+.product img{
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.basketTotalContainer{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.basketTotalTitle{
+    width: 30%;
+}
+
+.basketTotal{
+    width: 10%;
+}
+/* fin html par js pour produits */
 /* FIN CART.HTML */ 

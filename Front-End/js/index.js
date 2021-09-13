@@ -7,6 +7,15 @@ function openTab(id) {
   link.remove();
 }
 
+function onLoadCartNumbers() {
+  let productNumbers = localStorage.getItem('cartNumbers');
+
+  if(productNumbers) {
+      document.querySelector('.cart span').textContent = productNumbers;
+  }
+}
+onLoadCartNumbers();
+
 fetch('https://p5octt.herokuapp.com/api/cameras')
     .then((res) => res.json())
     .then((data) => {
