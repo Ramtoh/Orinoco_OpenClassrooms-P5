@@ -10,7 +10,7 @@ let containerProducts = document.getElementById("containerProducts");
 
 const productsView = item => {
     containerProducts.innerHTML =
-    `<div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src=${item.imageUrl} alt="..." /></div>
+    `<div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" style="border: 1px solid black;" src=${item.imageUrl} alt="..." /></div>
     <div class="col-md-6">
         <div class="small mb-1">Référence: ${item._id}</div>
         <h1 class="display-5 fw-bolder">${item.name}</h1>
