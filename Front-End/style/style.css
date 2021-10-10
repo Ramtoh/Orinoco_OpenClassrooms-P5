@@ -231,6 +231,12 @@ footer{
 /* / FIN CONFIRMATION.HTML / */ 
 
 /* CART.HTML */
+@media screen and (max-width: 590px){
+    .product img{
+        height: 100px!important;
+        width: 100px!important;
+    }
+}
 
 .shoppingDiv > a{
     text-decoration: none;
@@ -284,7 +290,7 @@ footer{
 }
 
 .quantity{
-    width: 29%;
+    width: 27%;
     display: flex;
     align-items: center;
 }
@@ -299,17 +305,6 @@ footer{
     padding: 10px 0;
     border-bottom: 1px solid black;
 }
-
-.product fa-times,
-.product fa-minus,
-.product fa-plus{
-    font-size: 25px;
-    color: black;
-    margin-left: 10px;
-    margin-right: 10px;
-    cursor: pointer;
-}
-
 
 .product img{
     width: 200px;
@@ -346,15 +341,6 @@ footer{
     padding: 10px 0;
 }
 
-.confirmOrder button:hover{
-    color: green;
-}
-
-.delItem:hover{
-    cursor: pointer;
-    color: red;
-}
-
 #delAllCart{
     display: flex;
     justify-content: flex-end;
@@ -367,6 +353,10 @@ footer{
 #delAllCart:hover { 
     color: red;
     cursor: pointer;
+}
+
+#form_container{
+    display: none;
 }
 
 /* fin html par js pour produits */

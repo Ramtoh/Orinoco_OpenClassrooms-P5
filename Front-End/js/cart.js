@@ -8,17 +8,12 @@ if( cart && cartContainer ) {
         cartContainer.innerHTML += `
             <div class="product">
                 <div class="product-title">
-                    <a class="delItem">
-                        <i class="fas fa-times"></i>
-                    </a>
                     <img src=${item.imageUrl}>
                     <span>${item.name}</span>
                 </div>
                 <div class="price">${item.price/100}€</div>
                 <div class="quantity">
-                    <i class="fas fa-minus decrease"></i>
                     <span>${item.inCart}</span>
-                    <i class="fas fa-plus increase"></i>
                 </div>
                 <div class="total">
                     ${item.inCart * item.price/100}€
@@ -33,7 +28,7 @@ if( cart && cartContainer ) {
             <h4 class="basketTotal">${cartCost}€</h4>
         </div>
         <div class="confirmOrder">
-            <button>Confirmer la commande</button>
+            <button class="btn-dark" id="confirmButton">Confirmer la commande</button>
         </div>
         <div id="delAllCart">
             <span id="delItem">Supprimer le panier</span>
@@ -41,49 +36,177 @@ if( cart && cartContainer ) {
     `
 };
 
+// alerte l'utilisateur que son panier est vide et le redirige a la page d'accueil
+
+if ( cart == null ) {
+    alert('Votre panier est vide');
+    window.location.href = 'index.html';
+}
+
+
+// supprime tout le panier 
+
 delAllCart = () => {
     if ( cart == null ) {
 
     } else {
         localStorage.clear();
         window.location.reload();
-    } 
+    }   
 };
 
-delAllCart = document.getElementById('delAllCart');
-delAllCart.addEventListener('click', delAllCart);
-
+delAllCartButton = document.getElementById('delAllCart');
+delAllCartButton.addEventListener('click', delAllCart);
 
 // FORMULAIRE DE COMMANDE
-// formOrder = document.getElementById("form_container");
-// formOrder.innerHTML = `
 
-// `
+formOrder = document.getElementById("form_container");
+formOrder.innerHTML += `
+    <div id="error"></div>
+    <form id="formRegister">
+        <input type="text" required class="form-control" id="firstNameConfirmation" placeholder="Prénom">
 
-// const contact = {
-//     firstName: document.querySelector("#inputfirstName").value,
-//     lastName: document.querySelector("#inputLastName").value,
-//     email: document.querySelector("#inputEmail").value,
-//     address: document.querySelector("#inputAddress").value,
-//     city: document.querySelector("#inputCity").value,
-// };
+        <input type="text" required class="form-control mt-2" id="lastNameConfirmation" placeholder="Nom">
 
-// JSON.stringify(contact);
+        <input type="text" required class="form-control mt-2" id="addressConfirmation" placeholder="Adresse">
 
-// const userOrder = {
-//     products,
-//     contact,
-// };
+        <input type="text" required class="form-control mt-2" id="cityConfirmation" placeholder="Ville">
 
-// console.log(userOrder);
+        <input type="email" required class="form-control mt-2" id="emailConfirmation" placeholder="Adresse mail"> 
 
-// fetch("https://p5octt.herokuapp.com/api/cameras/order", {
-//     method: 'POST',
-//     headers: {
-//         'content-type': "application/json"
-//     },
-//     mode:"cors",
-//     body: JSON.stringify(userOrder),
-// })
+        <button type="submit" class="btn mt-2 btn-dark form-control" id="orderConfirmation"> 
+            Commander
+        </button>
+    </form>
+`
+ 
+function showForm() {
+    let showForm = document.getElementById('form_container');
+    showForm.style="display: block;";
+    window.location.replace('#orderConfirmation') ;
+}
 
-// FIN FORMULAIRE DE COMMANDE
+let showFormButton = document.getElementById('confirmButton');
+showFormButton.addEventListener('click', showForm);
+
+
+
+confirmOrder = () => {
+    const contact = {
+        "firstName": document.querySelector("#firstNameConfirmation").value,
+        "lastName": document.querySelector("#lastNameConfirmation").value,
+        "address": document.querySelector("#addressConfirmation").value,
+        "city": document.querySelector("#cityConfirmation").value,
+        "email": document.querySelector('#emailConfirmation').value
+    };
+
+    let products = [];
+
+    for (const [key, value] of Object.entries(JSON.parse(localStorage.getItem('productsInCart')))) {
+        products.push(value._id);
+    }
+
+    const userOrder = {
+        contact,
+        products,
+    };
+
+    fetch("https://p5octt.herokuapp.com/api/cameras/order", {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+        mode:"cors",
+        body: JSON.stringify(userOrder),
+        })
+    .then(function(response){
+        return response.json()
+    })
+    .then(function (r){
+        localStorage.setItem("contact", JSON.stringify(r.contact));
+        window.location.assign("confirmation.html?orderId=" + r.orderId);
+        console.log(r);
+    })
+    .catch(function (err){
+        console.log("fetch Error");
+    });
+}; 
+
+let orderConfirmation = document.getElementById('orderConfirmation');
+orderConfirmation.addEventListener('submit', function(e) {e.preventDefault(); confirmOrder()});
+
+
+// Expressions regulieres pour le formulaire 
+
+const regexFirstName = value => {
+    return /^[a-zéèçà]$/.test(value)
+  }
+
+function firstNameControl() {
+    let firstName = document.getElementById('firstNameConfirmation');
+    if (regExFirstName(firstName)) {
+        return true;
+    } else {
+        alert("Votre prénom n'est pas valide")
+    }
+}
+
+const regExLastName = (value) => {
+    /^[a-zéèçà]$/.test(value);
+}
+
+function lastNameControl() {
+    let lastName = document.getElementById('lastNameConfirmation');
+    if (regExLastName(lastName)) {
+        return true;
+    } else {
+        alert("Votre nom n'est pas valide")
+    }
+}
+
+
+const regExAddress = (value) => {
+    /^\d+\s(.+)\s\d+\s\w+$/.test(value);
+}
+
+function addressControl() {
+    let address = document.getElementById('addressConfirmation');
+    if (regExAddress(address)) {
+        return true;
+    } else {
+        alert("Votre adresse n'est pas valide")
+    }
+}
+
+
+
+const regExCity = (value) => {
+    /^[a-zA-Zéèçà]$/.test(value);
+}
+
+function cityControl() {
+   let city = document.getElementById('cityConfirmation');
+   if (regExCity(city)) {
+       return true;
+   } else {
+       alert("Le nom de votre ville n'est pas valide")
+   }
+}
+
+
+
+const regExEmail = (value) => {
+     /^.+\@.+\..+$/.test(value);
+}
+
+function emailControl() {
+    let email = document.getElementById('emailConfirmation');
+    if (regExEmail(email)) {
+        return true;
+    } else {
+        alert("Votre email n'est pas valide")
+    }
+}
+
+

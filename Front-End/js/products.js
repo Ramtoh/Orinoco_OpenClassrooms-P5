@@ -76,12 +76,16 @@ const productsView = item => {
         if(cartItems != null) {
 
             if(cartItems[products.name] == undefined) {
+                console.log(cartItems);
+                products.inCart = 1;
                 cartItems = {
                     ...cartItems,
                     [products.name]: item
                 }
+            } else {
+                cartItems[products.name].inCart += 1;
             }
-            cartItems[products.name].inCart += 1;
+
         } else {
             products.inCart = 1;
             cartItems = {
