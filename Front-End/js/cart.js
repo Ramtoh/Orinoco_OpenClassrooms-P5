@@ -74,9 +74,7 @@ formOrder.innerHTML += `
 
         <input type="email" required class="form-control mt-2" id="emailConfirmation" placeholder="Adresse mail"> 
 
-        <button type="submit" class="btn mt-2 btn-dark form-control" id="orderConfirmation"> 
-            Commander
-        </button>
+        <input type="submit" value="Commander" class="btn mt-2 btn-dark form-control" id="orderConfirmation"> 
     </form>
 `
  
@@ -92,121 +90,83 @@ showFormButton.addEventListener('click', showForm);
 
 
 confirmOrder = () => {
-    const contact = {
-        "firstName": document.querySelector("#firstNameConfirmation").value,
-        "lastName": document.querySelector("#lastNameConfirmation").value,
-        "address": document.querySelector("#addressConfirmation").value,
-        "city": document.querySelector("#cityConfirmation").value,
-        "email": document.querySelector('#emailConfirmation').value
-    };
 
-    let products = [];
+    if ((checkFirstName(document.querySelector("#firstNameConfirmation").value) == false) || (checkLastName(document.querySelector("#lastNameConfirmation").value) == false) || (checkAddress(document.querySelector("#addressConfirmation").value) == false) || (checkCity(document.querySelector("#cityConfirmation").value) == false) || (checkEmail(document.querySelector("#emailConfirmation").value) == false) ) {
+        errorMessage = document.getElementById("error");
+        errorMessage.innerHtml += `
+            <p>Certains champs sont incorrects</p>
+        `
+    } else {
+        const contact = {
+            "firstName": document.querySelector("#firstNameConfirmation").value,
+            "lastName": document.querySelector("#lastNameConfirmation").value,
+            "address": document.querySelector("#addressConfirmation").value,
+            "city": document.querySelector("#cityConfirmation").value,
+            "email": document.querySelector('#emailConfirmation').value
+        };
 
-    for (const [key, value] of Object.entries(JSON.parse(localStorage.getItem('productsInCart')))) {
-        products.push(value._id);
-    }
+        let products = [];
 
-    const userOrder = {
-        contact,
-        products,
-    };
+        for (const [key, value] of Object.entries(JSON.parse(localStorage.getItem('productsInCart')))) {
+            products.push(value._id);
+        }
 
-    fetch("https://p5octt.herokuapp.com/api/cameras/order", {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/json'
-        },
-        mode:"cors",
-        body: JSON.stringify(userOrder),
+        const userOrder = {
+            contact,
+            products,
+        };
+
+        fetch("https://p5octt.herokuapp.com/api/cameras/order", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            mode:"cors",
+            body: JSON.stringify(userOrder),
+            })
+        .then(function(response){
+            return response.json()
         })
-    .then(function(response){
-        return response.json()
-    })
-    .then(function (r){
-        localStorage.setItem("contact", JSON.stringify(r.contact));
-        window.location.assign("confirmation.html?orderId=" + r.orderId);
-        console.log(r);
-    })
-    .catch(function (err){
-        console.log("fetch Error");
-    });
+        .then(function (r){
+            localStorage.setItem("contact", JSON.stringify(r.contact));
+            window.location.assign("confirmation.html?orderId=" + r.orderId);
+            console.log(r);
+        })
+        .catch(function (err){
+            console.log("fetch Error");
+        });
+    };
 }; 
 
-let orderConfirmation = document.getElementById('orderConfirmation');
+let orderConfirmation = document.getElementById('formRegister');
 orderConfirmation.addEventListener('submit', function(e) {e.preventDefault(); confirmOrder()});
-
 
 // Expressions regulieres pour le formulaire 
 
-const regexFirstName = value => {
-    return /^[a-zéèçà]$/.test(value)
-  }
-
-function firstNameControl() {
-    let firstName = document.getElementById('firstNameConfirmation');
-    if (regExFirstName(firstName)) {
-        return true;
-    } else {
-        alert("Votre prénom n'est pas valide")
-    }
+function checkFirstName(firstName) {
+    let re= /^[a-zA-Z]+$/;
+    return re.test(firstName) 
 }
 
-const regExLastName = (value) => {
-    /^[a-zéèçà]$/.test(value);
+function checkLastName(lastName) {
+    let re= /^[a-zA-Z]+$/;
+    return re.test(lastName)
 }
 
-function lastNameControl() {
-    let lastName = document.getElementById('lastNameConfirmation');
-    if (regExLastName(lastName)) {
-        return true;
-    } else {
-        alert("Votre nom n'est pas valide")
-    }
+function checkAddress(address) {
+    let re= /^[a-zA-Z0-9\s,'-]*$/;
+    return re.test(address)
 }
 
+function checkCity(city) {
+    let re = /^[a-zA-Z]+$/;
+    return re.test(city)
+};
 
-const regExAddress = (value) => {
-    /^\d+\s(.+)\s\d+\s\w+$/.test(value);
-}
-
-function addressControl() {
-    let address = document.getElementById('addressConfirmation');
-    if (regExAddress(address)) {
-        return true;
-    } else {
-        alert("Votre adresse n'est pas valide")
-    }
-}
-
-
-
-const regExCity = (value) => {
-    /^[a-zA-Zéèçà]$/.test(value);
-}
-
-function cityControl() {
-   let city = document.getElementById('cityConfirmation');
-   if (regExCity(city)) {
-       return true;
-   } else {
-       alert("Le nom de votre ville n'est pas valide")
-   }
-}
-
-
-
-const regExEmail = (value) => {
-     /^.+\@.+\..+$/.test(value);
-}
-
-function emailControl() {
-    let email = document.getElementById('emailConfirmation');
-    if (regExEmail(email)) {
-        return true;
-    } else {
-        alert("Votre email n'est pas valide")
-    }
-}
+function checkEmail(email) {
+    let re= /\S+@\S+\.\S+/;
+    return re.test(email)
+} 
 
 
