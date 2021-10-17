@@ -92,10 +92,7 @@ showFormButton.addEventListener('click', showForm);
 confirmOrder = () => {
 
     if ((checkFirstName(document.querySelector("#firstNameConfirmation").value) == false) || (checkLastName(document.querySelector("#lastNameConfirmation").value) == false) || (checkAddress(document.querySelector("#addressConfirmation").value) == false) || (checkCity(document.querySelector("#cityConfirmation").value) == false) || (checkEmail(document.querySelector("#emailConfirmation").value) == false) ) {
-        errorMessage = document.getElementById("error");
-        errorMessage.innerHtml += `
-            <p>Certains champs sont incorrects</p>
-        `
+        alert('Certains champs ne sont pas corrects !');
     } else {
         const contact = {
             "firstName": document.querySelector("#firstNameConfirmation").value,
@@ -160,7 +157,7 @@ function checkAddress(address) {
 }
 
 function checkCity(city) {
-    let re = /^[a-zA-Z]+$/;
+    let re = /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
     return re.test(city)
 };
 
